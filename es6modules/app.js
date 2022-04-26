@@ -1,6 +1,5 @@
 import {random , uniq } from 'lodash';
-import axios from 'axios';
-import {
+import getCityes,{
   key,
   cityesUrl as url,
   mapCityes,
@@ -9,15 +8,13 @@ import {
 } from './src/constants';
 
 
-console.log('key >' , key, 'cityesUrl > ' , url, month,num);
+getCityes().then(
+  (cityes) =>{
+    const mapCitties = mapCityes(cityes);
+    console.log('cityes>>>>',cityes, mapCitties);
 
-
-axios.get(url)
-.then((data) => {
-  const cityes = data.data ;
-  const mapCitties = mapCityes(cityes)
-  console.log(cityes,mapCitties);
-});
+  }
+)
 
 
 
