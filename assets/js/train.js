@@ -733,3 +733,254 @@
 // // допустим надо взять не все аргументы. тогда ненужные аргументы запакуются в массив
 // const [name,id, ...options] = car;
 // console.log(name, id, options);
+
+// ======================================
+// const cars = ['Tesla' , 'bmw', 'mersedes-bens', 'nissan', 'audi'];
+// const auto = {
+//   name: 'tesla',
+//   year: 2021,
+//   color: 'red'
+// }
+// for (let i = 0; i < cars.length; i++) {
+//   const element = cars[i];
+//   console.log(element);
+// }
+
+// cars.forEach(car => {
+//   console.log(car);
+// })
+
+// for(const index in cars){
+//   console.log(cars[index]);
+//    if (index == 3) {
+//     break
+//   }
+// }
+
+// for( const car of cars ){
+//      if (car === 'bmw') {
+//     break
+//   }
+//   console.log(car);
+// }
+
+// for( const car of Object.keys(auto) ){
+//   console.log(car);
+// }
+
+// const baseURL = 'https://api.sampleapis.com/countries/countries';
+// const listPromice = fetch(baseURL);
+//   listPromice
+//   .then( resp => resp.json())
+//   .then(countries => {
+//     console.log(countries);
+//   } )
+//   .catch(err => {
+// console.log("ошибка", err);
+//   });
+
+
+// const cofee = new Promise((resolve, reject) => {
+//   setTimeout(()=>{
+//   resolve('ваш кофе готов')
+//   }, 1500)
+// })
+
+// cofee.then(data => {
+//   console.log(data);
+// })
+
+// const family = [
+//   {member: 'mother', id: 111, coffee: 'Latte'},
+//   {member: 'father', id: 222, coffee: 'aspresso'},
+//   {member: 'son', id: 333, coffee: 'Cappuccino'},
+// ]
+
+
+// const getCoffee = (member) => {
+//  const coffeePromise = fetch('https://api.sampleapis.com/coffee/hot');
+//   return coffeePromise
+//   .then(data => data.json())
+//   .then(list => {
+//     const coffee = list.find(res => res.title === member.coffee);
+//     return{
+//       ...member,
+//       coffee: coffee
+//     }
+//   })
+// }
+
+
+
+// const getFamilyMember = (id)=> {
+//   return new Promise((resolve, reject) => {
+//       setTimeout(()=>{
+//   const member = family.find(res => res.id === id);
+//   if(member){
+//     resolve(member);
+//   }else{
+// reject(Error('член сеиьи не найден'))
+//   }
+//   }, 1500)
+//   })
+// }
+
+// getFamilyMember(233)
+// .then(data => {
+//  return getCoffee(data)
+//  .then(
+//    newMember =>{
+//      console.log('newMember',newMember);
+//    }
+//  ).catch(error=>{
+//    console.log("error", error);
+//  })
+ 
+// })
+
+
+// =============================
+
+
+// const makeCoffee = () =>{
+//   return new Promise((resolve,reject)=>{
+//       setTimeout(() =>{
+//        resolve("ваш кофе готов")
+//     } ,500)
+//   })
+// }
+
+
+
+// const makeToast = () =>{
+//   return new Promise((resolve,reject)=>{
+//     setTimeout(() =>{
+//        resolve("ваши тосты готовы")
+//     } ,2500)
+//   })
+// }
+
+// const coffeePromice = makeCoffee()
+// const tostPromice = makeToast()
+
+// coffeePromice.then(data => {
+//   console.log(data);
+// })
+
+// tostPromice.then(data => {
+//   console.log(data);
+// })
+
+
+// Promise.all([coffeePromice, tostPromice]).then(([coffeePromice, tostPromice]) => {
+//   console.log(coffeePromice, tostPromice);
+// })
+
+
+// =======
+
+// const beersPromice = fetch("https://api.sampleapis.com/beers/ale");
+// const winesPromice = fetch("https://api.sampleapis.com/wines/reds");
+
+
+// Promise.all([beersPromice,winesPromice])
+// .then(data =>{
+//   return Promise.all(data.map(res => res.json()));
+// })
+// .then(finalData =>{
+//   console.log(finalData);
+// })
+
+// ==============================
+// function Car(brand,color){
+//   this.brand  = brand;
+//   this.color  = color;
+// }
+
+
+// const ford = new Car('ford', 'red');
+// console.log( "brand >>",ford.brand, "//// color>>>", ford.color);
+
+
+
+// Car.prototype.start= function () {
+//   console.log(`${this.brand} - start`);
+// }
+
+// ford.start();
+
+
+
+// class Car {
+// constructor(brand, color){
+//   this.brand = brand;
+//   this.color = color;
+// }
+
+// start(){
+//   console.log(`${this.brand} - start`);
+// }
+
+// stop(){
+//   console.log(`${this.brand} - stop`);
+// }
+
+// static discount(){
+//   console.log('общая скидка -10%' );
+// }
+
+// set rating(value){
+// this.score = value.toUpperCase();
+// }
+// get rating(){
+//   return this.score
+// }
+
+// }
+
+//  const ford = new Car('ford', 'red');
+//  const nissan = new Car('nissan', 'red');
+
+// console.log(ford.rating ="five");
+// console.log(ford.rating);
+
+
+
+
+
+
+class Car {
+constructor(brand){
+  this.brand = brand;
+  this.gasTank = 100;
+  this.refueling = [];
+}
+getGas(){
+  this.gasTank +=10;
+  const stamp = Date.now();
+  const time = new Date(stamp);
+  this.refueling.push(time.toString());
+  return this.gasTank;
+}
+
+drive(){
+  this.gasTank -= 10;
+  return this.gasTank;
+}
+}
+
+
+class HibridCar extends Car {
+  constructor (brand, model){
+    super(brand)
+    this.brand = brand;
+    this.model = model;
+  }
+  autopark(){
+    console.log('автопарка');
+  }
+}
+
+
+const nissan = new Car('nissan')
+const lexus = new HibridCar('lexus', 'rx')

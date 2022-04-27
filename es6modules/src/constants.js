@@ -8,11 +8,10 @@ export const cityesUrl = "https://gist.githubusercontent.com/VasilyMur/8b679b548
 
 
 export function mapCityes(cityes){
-  return cityes.map((responce )=>{
+return cityes.map((responce )=>{
 const {city, population} = responce;
 return {city, population};
   })
-
 }
 
 const getCityes = () => {
