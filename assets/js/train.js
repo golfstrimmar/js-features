@@ -949,38 +949,43 @@
 
 
 
-class Car {
-constructor(brand){
-  this.brand = brand;
-  this.gasTank = 100;
-  this.refueling = [];
-}
-getGas(){
-  this.gasTank +=10;
-  const stamp = Date.now();
-  const time = new Date(stamp);
-  this.refueling.push(time.toString());
-  return this.gasTank;
-}
+// class Car {
+// constructor(brand){
+//   this.brand = brand;
+//   this.gasTank = 100;
+//   this.refueling = [];
+// }
+// getGas(){
+//   this.gasTank +=10;
+//   const stamp = Date.now();
+//   const time = new Date(stamp);
+//   this.refueling.push(time.toString());
+//   return this.gasTank;
+// }
 
-drive(){
-  this.gasTank -= 10;
-  return this.gasTank;
-}
-}
-
-
-class HibridCar extends Car {
-  constructor (brand, model){
-    super(brand)
-    this.brand = brand;
-    this.model = model;
-  }
-  autopark(){
-    console.log('автопарка');
-  }
-}
+// drive(){
+//   this.gasTank -= 10;
+//   return this.gasTank;
+// }
+// }
 
 
-const nissan = new Car('nissan')
-const lexus = new HibridCar('lexus', 'rx')
+// class HibridCar extends Car {
+//   constructor (brand, model){
+//     super(brand)
+//     this.brand = brand;
+//     this.model = model;
+//   }
+//   autopark(){
+//     console.log('автопарка');
+//   }
+// }
+
+
+// const nissan = new Car('nissan')
+// const lexus = new HibridCar('lexus', 'rx')
+
+
+
+
+
